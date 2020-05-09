@@ -1,0 +1,56 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.779
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp", "ConsoleApp\ConsoleApp.csproj", "{E3182715-5D2C-4AE0-9708-A58D3C5AE2B4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreLib", "CoreLib\CoreLib.csproj", "{46B8CD8B-D6BD-4344-84F6-F8AC9C36C6B8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Rules", "Rules", "{045FB74D-EF87-4D7A-AD97-4C443BF86FBF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GetUserListRule", "GetUserListRule\GetUserListRule.csproj", "{DCB799ED-4C51-4765-B492-9E5645579029}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EchoMessageRule", "EchoMessageRule\EchoMessageRule.csproj", "{4675D368-665C-4A7F-93EF-65D5D3907430}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReadTextFileRule", "ReadTextFileRule\ReadTextFileRule.csproj", "{91CA55EE-FB6A-422E-8C2A-3DA595804D7B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E3182715-5D2C-4AE0-9708-A58D3C5AE2B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E3182715-5D2C-4AE0-9708-A58D3C5AE2B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E3182715-5D2C-4AE0-9708-A58D3C5AE2B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E3182715-5D2C-4AE0-9708-A58D3C5AE2B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46B8CD8B-D6BD-4344-84F6-F8AC9C36C6B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46B8CD8B-D6BD-4344-84F6-F8AC9C36C6B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46B8CD8B-D6BD-4344-84F6-F8AC9C36C6B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46B8CD8B-D6BD-4344-84F6-F8AC9C36C6B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DCB799ED-4C51-4765-B492-9E5645579029}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DCB799ED-4C51-4765-B492-9E5645579029}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DCB799ED-4C51-4765-B492-9E5645579029}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DCB799ED-4C51-4765-B492-9E5645579029}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4675D368-665C-4A7F-93EF-65D5D3907430}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4675D368-665C-4A7F-93EF-65D5D3907430}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4675D368-665C-4A7F-93EF-65D5D3907430}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4675D368-665C-4A7F-93EF-65D5D3907430}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91CA55EE-FB6A-422E-8C2A-3DA595804D7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91CA55EE-FB6A-422E-8C2A-3DA595804D7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91CA55EE-FB6A-422E-8C2A-3DA595804D7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91CA55EE-FB6A-422E-8C2A-3DA595804D7B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{DCB799ED-4C51-4765-B492-9E5645579029} = {045FB74D-EF87-4D7A-AD97-4C443BF86FBF}
+		{4675D368-665C-4A7F-93EF-65D5D3907430} = {045FB74D-EF87-4D7A-AD97-4C443BF86FBF}
+		{91CA55EE-FB6A-422E-8C2A-3DA595804D7B} = {045FB74D-EF87-4D7A-AD97-4C443BF86FBF}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2D2F913B-8D3A-4F38-B33B-CB68BF5CC672}
+	EndGlobalSection
+EndGlobal
