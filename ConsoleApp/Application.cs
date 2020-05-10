@@ -103,11 +103,11 @@ namespace ConsoleApp
                 var stopwatch = Stopwatch.StartNew();
                 var sandbox = AssemblySandboxManager.Create(id, id.ToString(), parentDirectory);
 
-                // Load assembly into sandbox
+                // Load assembly into sandbox if not exits
                 var assemblyBytes = GetAssemblyBytes(assemblyName);
                 sandbox.LoadAssembly(assemblyName, assemblyBytes);
 
-                // Execute assembly specified method
+                // Execute specified method in assembly  
                 byte[] serializedResult = sandbox.ExecuteMethod(
                     assemblyName, $"{assemblyName}.{RULE_IMPLEMENT_TYPENAME}", RULE_EXECUTE_METHOD,
                     ConstructorTypes: null, ConstructorParameters: null,
@@ -157,12 +157,12 @@ namespace ConsoleApp
 
             Console.WriteLine($"Preparing sandboxes: <{instanceNum}> ...");
             var sharedSandboxes = new List<IAssemblySandbox>();
-            //for (int i = 0; i < instanceNum; i++)
-            //{
-            //    var id = Guid.NewGuid();
-            //    var sandbox = AssemblySandboxManager.Create(id, id.ToString(), parentDirectory);
-            //    sharedSandboxes.Add(sandbox);
-            //}
+            for (int i = 0; i < instanceNum; i++)
+            {
+                var id = Guid.NewGuid();
+                var sandbox = AssemblySandboxManager.Create(id, id.ToString(), parentDirectory);
+                sharedSandboxes.Add(sandbox);
+            }
 
             var rand = new Random(1024);
             var assemblyName = RuleTypeAssemblyMap[ruleType];
@@ -171,23 +171,26 @@ namespace ConsoleApp
             for (int i = 0; i < taskNum; i++)
             {
                 var stopwatch = Stopwatch.StartNew();
-                //var sandbox = sharedSandboxes[rand.Next(instanceNum)];
+                var sandbox = sharedSandboxes[rand.Next(instanceNum)];
 
-                //taskSandboxTraces[i] = sandbox.CurrentDomain.FriendlyName;
-                //Console.WriteLine($"Using sandbox: <{taskSandboxTraces[i]}> for task: #{i} ...");
-
-                var id = Guid.NewGuid();
-                var sandbox = AssemblySandboxManager.Create(id, id.ToString(), parentDirectory);
+                taskSandboxTraces[i] = sandbox.CurrentDomain.FriendlyName;
+                Console.WriteLine($"Using sandbox: <{taskSandboxTraces[i]}> for task: #{i} ...");
 
                 // Load assembly into sandbox
-                var assemblyBytes = GetAssemblyBytes(assemblyName);
-                sandbox.LoadAssembly(assemblyName, assemblyBytes);
+                //var loadedAssemblies = sandbox.LoadedAssemblies;
+                if (!sandbox.ExistsAssembly(assemblyName))
+                {
+                    var assemblyBytes = GetAssemblyBytes(assemblyName);
+                    sandbox.LoadAssembly(assemblyName, assemblyBytes);
+                    //TEST
+                    //loadedAssemblies = sandbox.LoadedAssemblies;
+                }
 
                 // Execute assembly specified method
                 byte[] serializedResult = sandbox.ExecuteMethod(
-                    assemblyName, $"{assemblyName}.{RULE_IMPLEMENT_TYPENAME}", RULE_EXECUTE_METHOD,
-                    ConstructorTypes: null, ConstructorParameters: null,
-                    MethodTypes: new string[] { typeof(Dictionary<string, object>).AssemblyQualifiedName }, MethodParameters: new object[] { inputs });
+                        assemblyName, $"{assemblyName}.{RULE_IMPLEMENT_TYPENAME}", RULE_EXECUTE_METHOD,
+                        ConstructorTypes: null, ConstructorParameters: null,
+                        MethodTypes: new string[] { typeof(Dictionary<string, object>).AssemblyQualifiedName }, MethodParameters: new object[] { inputs });
 
                 sandboxExecuteTimes[i] = MillisecondToSeconds(stopwatch.ElapsedMilliseconds);
                 sandboxExecuteMemoryTraces[i] = GetProcessMemorySize();

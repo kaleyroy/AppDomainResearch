@@ -29,5 +29,6 @@ namespace CoreLib
         AppDomain CurrentDomain { get; }
         bool IsBusy { get; }
         Assembly[] LoadedAssemblies {get;}
+        bool ExistsAssembly(string assemblyName);
     }
 }

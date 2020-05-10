@@ -458,7 +458,7 @@ namespace CoreLib
         {
             //Assembly[] AssembliesBeforeLoad = AppDomain.CurrentDomain.GetAssemblies();
 
-            if (AssemblyMap.ContainsKey(name))
+            if (AssemblyMap.ContainsKey(name.ToLower()))
                 return;
 
             var assembly = AppDomain.CurrentDomain.Load(bytes);
@@ -928,11 +928,13 @@ namespace CoreLib
         {
             get { return AppDomain.CurrentDomain.GetAssemblies(); }
         }
-
         public AppDomain CurrentDomain
         {
             get { return AppDomain.CurrentDomain; }
         }
-
+        public bool ExistsAssembly(string assemblyName)
+        {
+            return AssemblyMap.ContainsKey(assemblyName.ToLower());
+        }
     }
 }
