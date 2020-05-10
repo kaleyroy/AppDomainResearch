@@ -60,6 +60,6 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>copy $(TargetPath) $(SolutionDir)\ConsoleApp\bin\Debug\Rules\$(TargetFileName)
-copy $(TargetName).pdb $(SolutionDir)\ConsoleApp\bin\Debug\Rules\$(TargetName).pdp</PostBuildEvent>
+</PostBuildEvent>
   </PropertyGroup>
 </Project>

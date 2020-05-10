@@ -42,7 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Rule\ISimpleRule.cs" />
-    <Compile Include="Sandbox\AssemblySandboxManager.cs" />
+    <Compile Include="Sandbox\AssemblySandboxBuilder.cs" />
     <Compile Include="Sandbox\AssemblySandbox.cs" />
     <Compile Include="Sandbox\IAssemblySandbox.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

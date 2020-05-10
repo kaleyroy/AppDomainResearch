@@ -56,7 +56,7 @@ namespace ConsoleApp
                 var id = Guid.NewGuid();
                 var stopwatch = Stopwatch.StartNew();
 
-                var sandbox = AssemblySandboxManager.Create(id, id.ToString(), parentDirectory);
+                var sandbox = AssemblySandboxBuilder.Create(id, id.ToString(), parentDirectory);
 
                 sandboxCreationTimes[i] = MillisecondToSeconds(stopwatch.ElapsedMilliseconds);
                 sandboxMemoryTraces[i] = GetProcessMemorySize();
@@ -101,7 +101,7 @@ namespace ConsoleApp
                 Console.WriteLine($"Creating task: #{i} ...");
                 var id = Guid.NewGuid();
                 var stopwatch = Stopwatch.StartNew();
-                var sandbox = AssemblySandboxManager.Create(id, id.ToString(), parentDirectory);
+                var sandbox = AssemblySandboxBuilder.Create(id, id.ToString(), parentDirectory);
 
                 // Load assembly into sandbox if not exits
                 var assemblyBytes = GetAssemblyBytes(assemblyName);
@@ -160,7 +160,7 @@ namespace ConsoleApp
             for (int i = 0; i < instanceNum; i++)
             {
                 var id = Guid.NewGuid();
-                var sandbox = AssemblySandboxManager.Create(id, id.ToString(), parentDirectory);
+                var sandbox = AssemblySandboxBuilder.Create(id, id.ToString(), parentDirectory);
                 sharedSandboxes.Add(sandbox);
             }
 
@@ -241,11 +241,13 @@ namespace ConsoleApp
 
         public static Dictionary<string, object> ExecuteRule(string assemblyName, Dictionary<string, object> inputs)
         {
+            PrintMemoryUsage();
+
             // Create assembly sandbox
             var id = Guid.NewGuid();
             var stopwatch = Stopwatch.StartNew();
 
-            var sandbox = AssemblySandboxManager.Create(id);
+            var sandbox = AssemblySandboxBuilder.Create(id);
             PrintMemoryUsage(sandbox.CurrentDomain, "CREATED");
 
             // Load assembly into sandbox
